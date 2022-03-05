@@ -1,6 +1,11 @@
 <template>
-	<Block />
+	<h1>Vue Reaction Timer</h1>
 	<Results />
+
+	<button class="btn" @click="startNewGame" :disabled="isPlaying">
+		Start New Game
+	</button>
+	<Block v-if="isPlaying" :delay="delay" />
 </template>
 
 <script>
@@ -13,6 +18,18 @@ export default {
 		Block,
 		Results,
 	},
+	data() {
+		return {
+			isPlaying: false,
+			delay: null,
+		};
+	},
+	methods: {
+		startNewGame() {
+			this.delay = 2000 + Math.random() * 5000;
+			this.isPlaying = true;
+		},
+	},
 };
 </script>
 
@@ -24,5 +41,23 @@ export default {
 	text-align: center;
 	color: #2c3e50;
 	margin-top: 60px;
+}
+.btn {
+	display: block;
+	width: fit-content;
+	font-size: 1.5em;
+	color: #fff;
+	padding: 8px 20px;
+	border-radius: 4px;
+	background-color: rgb(65, 184, 131);
+	cursor: pointer;
+	text-decoration: none;
+	margin: 20px auto;
+	border: 3px solid rgb(52, 73, 94);
+}
+.btn:disabled {
+	cursor: not-allowed;
+	background-color: #cccccc;
+	color: #666666;
 }
 </style>
