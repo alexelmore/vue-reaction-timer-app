@@ -14,7 +14,7 @@ export default {
 			message: "",
 		};
 	},
-	created() {
+	mounted() {
 		if (this.gameResults <= 150) {
 			this.message = "Amazing! You have super human reactions!";
 		}
