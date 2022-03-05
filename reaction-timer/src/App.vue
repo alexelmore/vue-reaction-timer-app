@@ -1,11 +1,11 @@
 <template>
-	<h1>Vue Reaction Timer</h1>
-	<Results />
+	<h1>Vue Reaction Timer Game</h1>
 
 	<button class="btn" @click="startNewGame" :disabled="isPlaying">
 		Start New Game
 	</button>
-	<Block v-if="isPlaying" :delay="delay" />
+	<Block @gameFinished="endGame" v-if="isPlaying" :delay="delay" />
+	<Results v-if="gameResults" :gameResults="gameResults" />
 </template>
 
 <script>
@@ -22,12 +22,19 @@ export default {
 		return {
 			isPlaying: false,
 			delay: null,
+			gameResults: null,
 		};
 	},
 	methods: {
 		startNewGame() {
 			this.delay = 2000 + Math.random() * 5000;
 			this.isPlaying = true;
+			this.gameResults = null;
+		},
+		endGame(results) {
+			console.log("fired reset!", results);
+			this.gameResults = results;
+			this.isPlaying = false;
 		},
 	},
 };
