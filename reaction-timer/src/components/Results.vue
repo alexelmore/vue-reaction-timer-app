@@ -1,7 +1,7 @@
 <template>
 	<div class="results">
 		<h1>Results</h1>
-		<h2>Reaction Time: {{ gameResults }}</h2>
+		<h2>Reaction Time in milliseconds: {{ gameResults }}</h2>
 		<h2>{{ message }}</h2>
 	</div>
 </template>
@@ -22,12 +22,12 @@ export default {
 			this.message = "Nice! You have good reactions!";
 		}
 		if (this.gameResults > 200 && this.gameResults < 300) {
-			this.message = "Decent Reactions...";
+			this.message = "Decent Reactions, but nothing to write home about...";
 		}
 		if (this.gameResults > 300 && this.gameResults < 350) {
 			this.message = "Your reactions are average at best...";
 		}
-		if (this.gameResults > 350) {
+		if (this.gameResults >= 350) {
 			this.message =
 				"SLOW! Vladimir Ilʹich Lenin has better reactions than you!";
 		}
