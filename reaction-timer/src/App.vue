@@ -55,9 +55,8 @@ export default {
 	margin: 20px auto;
 	border: 3px solid rgb(52, 73, 94);
 }
-.btn:disabled {
+button[disabled] {
+	opacity: 0.2;
 	cursor: not-allowed;
-	background-color: #cccccc;
-	color: #666666;
 }
 </style>
